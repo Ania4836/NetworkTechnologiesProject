@@ -1,11 +1,14 @@
 package com.example.anianetworkproject.service;
-
+import com.example.anianetworkproject.controller.dto.GetUserDto;
+import com.example.anianetworkproject.controller.dto.UserDto;
+import com.example.anianetworkproject.controller.dto.UserResponseDto;
 import com.example.anianetworkproject.infrastructure.entity.UserEntity;
 import com.example.anianetworkproject.infrastructure.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -17,21 +20,40 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public List<UserEntity> getAllUsers() {
-        return userRepository.findAll();
+    public GetUserDto getUserById(long id) {
+        UserEntity user = userRepository
+                .findById(id)
+                .orElseThrow(RuntimeException::new);
+
+        return new GetUserDto(
+                user.getId(),
+                user.getName(),
+                user.getLastName(),
+                user.getDateOfBirth(),
+                user.getEmail()
+        );
     }
 
-    public UserEntity getUserById(long id) {
-        return userRepository.findById(id).orElse(null);
+    public List<GetUserDto> getAllUsers() {
+        List<UserEntity> users = userRepository.findAll();
+
+        return users
+                .stream()
+                .map(user -> new GetUserDto(
+                        user.getId(),
+                        user.getName(),
+                        user.getLastName(),
+                        user.getDateOfBirth(),
+                        user.getEmail()
+                ))
+                .collect(Collectors.toList());
     }
 
-    public UserEntity createUser(UserEntity user) {
-        return userRepository.save(user);
-    }
-
-    public void deleteUser(long id) {
+    public void deleteUserById(long id) {
+        if (!userRepository.existsById(id)) {
+            throw new RuntimeException();
+        }
         userRepository.deleteById(id);
     }
 
-    // Other methods for user service
 }

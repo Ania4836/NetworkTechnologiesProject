@@ -12,7 +12,6 @@ public class CreateBookResponseDto {
     public long getId() {
         return id;
     }
-    //hgduhg
 
     public void setId(long id) {
         this.id = id;
