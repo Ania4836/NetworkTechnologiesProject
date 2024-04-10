@@ -1,4 +1,4 @@
-package com.example.anianetworkproject.service;
+package com.example.anianetworkproject.service.auth;
 
 import com.example.anianetworkproject.commonTypes.UserRole;
 import com.example.anianetworkproject.infrastructure.entity.AuthEntity;

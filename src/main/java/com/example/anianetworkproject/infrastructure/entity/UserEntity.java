@@ -1,5 +1,4 @@
 package com.example.anianetworkproject.infrastructure.entity;
-
 import jakarta.persistence.*;
 
 import java.sql.Date;
@@ -32,7 +31,6 @@ public class UserEntity {
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<LoanEntity> loans;
-
 
     public long getId() {
         return id;

@@ -1,40 +1,45 @@
 package com.example.anianetworkproject.infrastructure.entity;
 
+
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "books", schema = "library")
 public class BookEntity {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name="id")
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Basic
-    @Column(name="isbn")
+    @Column(name = "isbn", unique = true)
     private String isbn;
 
     @Basic
-    @Column(name="title")
+    @Column(name = "title")
     private String title;
 
     @Basic
-    @Column(name="author")
+    @Column(name = "author")
     private String author;
 
     @Basic
-    @Column(name="publisher")
+    @Column(name = "publisher")
     private String publisher;
 
     @Basic
-    @Column(name="year_published")
+    @Column(name = "year_published")
     private int yearPublished;
 
     @Basic
-    @Column(name="available_copies")
+    @Column(name = "available_copies")
     private int availableCopies;
 
+    @OneToMany(mappedBy = "book", fetch = FetchType.LAZY)
+    private List<LoanEntity> loans;
 
     public long getId() {
         return id;
@@ -80,8 +85,8 @@ public class BookEntity {
         return yearPublished;
     }
 
-    public void setYearPublished(int year_published) {
-        this.yearPublished = year_published;
+    public void setYearPublished(int yearPublished) {
+        this.yearPublished = yearPublished;
     }
 
     public int getAvailableCopies() {
@@ -91,4 +96,13 @@ public class BookEntity {
     public void setAvailableCopies(int availableCopies) {
         this.availableCopies = availableCopies;
     }
+
+    public List<LoanEntity> getLoans() {
+        return loans;
+    }
+
+    public void setLoans(List<LoanEntity> loans) {
+        this.loans = loans;
+    }
+
 }

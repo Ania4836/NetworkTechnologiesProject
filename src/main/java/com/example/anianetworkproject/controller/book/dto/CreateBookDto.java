@@ -1,20 +1,43 @@
-package com.example.anianetworkproject.controller.dto;
+package com.example.anianetworkproject.controller.book.dto;
 
-public class CreateBookResponseDto {
-    private long id;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotBlank;
+import org.springframework.security.access.prepost.PreAuthorize;
+
+public class CreateBookDto {
+
+    @NotBlank(message = "ISBN is mandatory")
+    @Schema(name = "isbn", example = "isbn")
     private String isbn;
+
+    @NotBlank(message = "Title is mandatory")
+    @Schema(name = "title", example = "title")
     private String title;
+
+    @NotBlank(message = "Author is mandatory")
+    @Schema(name = "author", example = "author")
     private String author;
+
+    @NotBlank(message = "Publisher is mandatory")
+    @Schema(name = "publisher", example = "publisher")
     private String publisher;
+
+    @Schema(name = "yearPublished", example = "2021")
     private int yearPublished;
+
+    @Schema(name = "availableCopies", example = "10")
     private int availableCopies;
 
-    public long getId() {
-        return id;
+    public CreateBookDto() {
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public CreateBookDto(String isbn, String title, String author, String publisher, int yearPublished, int availableCopies) {
+        this.isbn = isbn;
+        this.title = title;
+        this.author = author;
+        this.publisher = publisher;
+        this.yearPublished = yearPublished;
+        this.availableCopies = availableCopies;
     }
 
     public String getIsbn() {
@@ -63,18 +86,5 @@ public class CreateBookResponseDto {
 
     public void setAvailableCopies(int availableCopies) {
         this.availableCopies = availableCopies;
-    }
-
-    public CreateBookResponseDto(long id, String isbn, String title, String author, String publisher, int yearPublished, int availableCopies) {
-        this.id = id;
-        this.isbn = isbn;
-        this.title = title;
-        this.author = author;
-        this.publisher = publisher;
-        this.yearPublished = yearPublished;
-        this.availableCopies = availableCopies;
-    }
-
-    public CreateBookResponseDto() {
     }
 }

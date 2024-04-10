@@ -1,4 +1,4 @@
-package com.example.anianetworkproject.controller.dto;
+package com.example.anianetworkproject.controller.auth.dto;
 
 
 import com.example.anianetworkproject.commonTypes.UserRole;

@@ -1,6 +1,9 @@
-package com.example.anianetworkproject.controller.dto;
+package com.example.anianetworkproject.controller.auth.dto;
+
+import jakarta.validation.constraints.NotBlank;
 
 public class LoginResponseDto {
+
 
     private String token;
 

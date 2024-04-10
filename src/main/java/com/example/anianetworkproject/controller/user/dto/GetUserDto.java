@@ -1,4 +1,4 @@
-package com.example.anianetworkproject.controller.dto;
+package com.example.anianetworkproject.controller.user.dto;
 
 import java.sql.Date;
 

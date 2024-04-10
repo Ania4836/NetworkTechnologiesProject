@@ -1,6 +1,6 @@
 package com.example.anianetworkproject.security;
 
-import com.example.anianetworkproject.service.JwtService;
+import com.example.anianetworkproject.service.auth.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

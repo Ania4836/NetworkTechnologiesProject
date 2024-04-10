@@ -1,6 +1,7 @@
-package com.example.anianetworkproject.controller.dto;
+package com.example.anianetworkproject.controller.book.dto;
 
-public class CreateBookDto {
+public class CreateBookResponseDto {
+    private long id;
     private String isbn;
     private String title;
     private String author;
@@ -8,16 +9,25 @@ public class CreateBookDto {
     private int yearPublished;
     private int availableCopies;
 
-    public CreateBookDto() {
+    public CreateBookResponseDto() {
     }
 
-    public CreateBookDto(String isbn, String title, String author, String publisher, int yearPublished, int availableCopies) {
+    public CreateBookResponseDto(long id, String isbn, String title, String author, String publisher, int yearPublished, int availableCopies) {
+        this.id = id;
         this.isbn = isbn;
         this.title = title;
         this.author = author;
         this.publisher = publisher;
         this.yearPublished = yearPublished;
         this.availableCopies = availableCopies;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getIsbn() {

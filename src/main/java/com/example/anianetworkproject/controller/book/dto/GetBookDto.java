@@ -1,6 +1,8 @@
-package com.example.anianetworkproject.controller.dto;
+package com.example.anianetworkproject.controller.book.dto;
+
 
 public class GetBookDto {
+
     private long id;
     private String isbn;
     private String title;
